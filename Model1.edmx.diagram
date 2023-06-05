@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4b32e2b494104799b01f2c065fa073c9" Name="Diagram1">
+        <EntityTypeShape EntityType="Var4_PoliclinicaModel.Doctor" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Var4_PoliclinicaModel.Patient" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Var4_PoliclinicaModel.Reception" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Var4_PoliclinicaModel.Specialization" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Var4_PoliclinicaModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Var4_PoliclinicaModel.Treatment" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Var4_PoliclinicaModel.FK__Doctor__Speciali__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="Var4_PoliclinicaModel.FK__Reception__Docto__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="Var4_PoliclinicaModel.FK__Treatment__Docto__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="Var4_PoliclinicaModel.FK__Reception__Patie__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="Var4_PoliclinicaModel.FK__Treatment__Patie__4222D4EF" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

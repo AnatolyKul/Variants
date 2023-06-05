@@ -1,0 +1,301 @@
+﻿<Window x:Class="Var4_Policlinica.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Var4_Policlinica"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        FontFamily="Comic Sans MS"
+        FontSize="24"
+        Title="MainWindow" Height="1080" Width="1920">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Информация о пациентах">
+                <Grid Background="#FF757575">
+                    <Label Content="Добавление пациентов" HorizontalAlignment="Left" Margin="135,38,0,0" VerticalAlignment="Top" Foreground="White" FontSize="36"/>
+
+
+                    <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="236,238,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <Label Content="Ф.И.О." HorizontalAlignment="Left" Margin="295,120,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <Label Content="Адрес" HorizontalAlignment="Left" Margin="296,372,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <TextBox x:Name="FIO_TB" HorizontalAlignment="Left" Margin="142,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" BorderBrush="Black"/>
+                    <DatePicker x:Name="Birthday_DP" HorizontalAlignment="Left" Margin="142,292,0,0" VerticalAlignment="Top" Width="400" BorderBrush="Black"/>
+                    <TextBox x:Name="Adress_TB" HorizontalAlignment="Left" Margin="142,445,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" BorderBrush="Black"/>
+                    <TextBox x:Name="Phone_TB" HorizontalAlignment="Left" Margin="142,580,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" BorderBrush="Black"/>
+                    <Label Content="Телефон" HorizontalAlignment="Left" Margin="275,507,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <Label Content="Медицинский полис" HorizontalAlignment="Left" Margin="208,645,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <TextBox x:Name="Police_TB" HorizontalAlignment="Left" Margin="142,717,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" BorderBrush="Black"/>
+                    <Button x:Name="Add_Btn" Content="Добавить" HorizontalAlignment="Left" Margin="142,787,0,0" VerticalAlignment="Top" Background="#FFF36400" Width="400" Foreground="White" BorderBrush="White" Height="50" FontWeight="Bold" Click="Add_Btn_Click"/>
+                    <ListView x:Name="List_Patient" Margin="710,292,0,267" ItemsSource="{Binding Patients}" HorizontalContentAlignment="Stretch">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="7" Margin="0,5,0,5">
+
+
+                                    <TextBlock Margin="15,0,0,0">
+                                <Run Text="Ф.И.О: "></Run>
+                                <Run Text="{Binding FullName}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Дата рождения: "></Run>
+                                <Run Text="{Binding Birthday}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Адресс: "></Run>
+                                <Run Text="{Binding Adress}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Телефон:"></Run>
+                                <Run Text="{Binding Phone}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Медицинский полис: "></Run>
+                                <Run Text="{Binding Medical_policy}"></Run>
+                                    </TextBlock>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button x:Name="Edit_Btn" Content="Изменить данные" HorizontalAlignment="Left" Margin="142,865,0,0" VerticalAlignment="Top" Background="#FFF36400" Width="400" Foreground="White" BorderBrush="White" Height="50" FontWeight="Bold" Click="Edit_Btn_Click"/>
+                    <Label Content="Поиск по полису" HorizontalAlignment="Left" Margin="1201,120,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <TextBox x:Name="Search_TB" HorizontalAlignment="Left" Margin="1112,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" BorderBrush="Black" TextChanged="Search_TB_TextChanged"/>
+                    <Button x:Name="Look_Btn" Content="Выбрать пациента" HorizontalAlignment="Left" Margin="1112,865,0,0" VerticalAlignment="Top" Background="#FFF36400" Width="400" Foreground="White" BorderBrush="White" Height="50" FontWeight="Bold" Click="Look_Btn_Click"  />
+                    <Button x:Name="Del_Btn" Content="Удалить пациента" HorizontalAlignment="Left" Margin="1112,787,0,0" VerticalAlignment="Top" Background="#FFF36400" Width="400" Foreground="White" BorderBrush="White" Height="50" FontWeight="Bold" Click="Del_Btn_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Информация о врачах">
+                <Grid Background="#FF757575">
+                    <Label Content="Добавление врачей" HorizontalAlignment="Left" Margin="165,38,0,0" VerticalAlignment="Top" Foreground="White" FontSize="36"/>
+                    <Label Content="Ф.И.О." HorizontalAlignment="Left" Margin="295,120,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <Label Content="Специальность" HorizontalAlignment="Left" Margin="246,242,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <TextBox x:Name="FIO_TB_D" HorizontalAlignment="Left" Margin="142,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" BorderBrush="Black" Height="40"/>
+                    <TextBox x:Name="Phone_TB_D" HorizontalAlignment="Left" Margin="142,502,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" BorderBrush="Black" Height="40"/>
+                    <Label Content="Телефон" HorizontalAlignment="Left" Margin="284,423,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <Button x:Name="Add_Btn_D" Content="Добавить" HorizontalAlignment="Left" Margin="142,787,0,0" VerticalAlignment="Top" Background="#FFF36400" Width="400" Foreground="White" BorderBrush="White" Height="50" FontWeight="Bold" Click="Add_Btn_D_Click" />
+                    <ListView x:Name="List_Doctor" Margin="710,292,0,267" ItemsSource="{Binding Doctors}" HorizontalContentAlignment="Stretch">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="7" Margin="0,5,0,5">
+
+
+                                    <TextBlock Margin="15,0,0,0">
+                                <Run Text="Ф.И.О: "></Run>
+                                <Run Text="{Binding FullName}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Специальность: "></Run>
+                                <Run Text="{Binding Specialization}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Телефон:"></Run>
+                                <Run Text="{Binding Phone}"></Run>
+                                    </TextBlock>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button x:Name="Edit_Btn_D" Content="Изменить данные" HorizontalAlignment="Left" Margin="142,865,0,0" VerticalAlignment="Top" Background="#FFF36400" Width="400" Foreground="White" BorderBrush="White" Height="50" FontWeight="Bold" Click="Edit_Btn_D_Click" />
+                    <Label Content="Поиск по телефону" HorizontalAlignment="Left" Margin="770,120,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <TextBox x:Name="Search_TB_D" HorizontalAlignment="Left" Margin="710,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="370" BorderBrush="Black" TextChanged="Search_TB_D_TextChanged" Height="40" />
+                    <Button x:Name="Look_Btn_D" Content="Выбрать врача" HorizontalAlignment="Left" Margin="1112,865,0,0" VerticalAlignment="Top" Background="#FFF36400" Width="400" Foreground="White" BorderBrush="White" Height="50" FontWeight="Bold" Click="Look_Btn_D_Click"  />
+                    <ComboBox x:Name="Spec_CB" HorizontalAlignment="Left" Margin="142,336,0,0" VerticalAlignment="Top" Width="400"/>
+                    <ComboBox x:Name="Filter_Spec" HorizontalAlignment="Left" Margin="1132,174,0,0" VerticalAlignment="Top" Width="370" Height="40" ItemsSource="{Binding Specialization}" SelectionChanged="Filter_Spec_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                <Run Text="{Binding Name}"></Run>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Label Content="Фильтрация" HorizontalAlignment="Left" Margin="1243,120,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <ComboBox x:Name="Sort_CB" HorizontalAlignment="Left" Margin="1534,174,0,0" VerticalAlignment="Top" Width="370" Height="40" DisplayMemberPath="DisplayName" ItemsSource="{Binding SortItems}" SelectionChanged="Sort_CB_SelectionChanged" >
+
+                    </ComboBox>
+                    <Label Content="Сортировка" HorizontalAlignment="Left" Margin="1645,120,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <Button x:Name="Del_Btn_D" Content="Удалить врача" HorizontalAlignment="Left" Margin="1112,787,0,0" VerticalAlignment="Top" Background="#FFF36400" Width="400" Foreground="White" BorderBrush="White" Height="50" FontWeight="Bold" Click="Del_Btn_D_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Информация о приёмах">
+                <Grid Background="#FF757575">
+                    <ListView x:Name="List_Doctor_Pr" ItemsSource="{Binding Doctors}" Margin="0,165,1364,542" HorizontalContentAlignment="Stretch">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="7" Margin="0,5,0,5">
+
+                                    <TextBlock Margin="15,0,0,0">
+                                <Run Text="Ф.И.О: "></Run>
+                                <Run Text="{Binding FullName}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Специальность: "></Run>
+                                <Run Text="{Binding Specialization}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Телефон:"></Run>
+                                <Run Text="{Binding Phone}"></Run>
+                                    </TextBlock>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Label Content="Врачи" HorizontalAlignment="Left" Margin="218,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="32"/>
+                    <ListView x:Name="List_Patient_Pr" Margin="0,638,1364,0" ItemsSource="{Binding Patients}" HorizontalContentAlignment="Stretch">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="7" Margin="0,5,0,5">
+
+
+                                    <TextBlock Margin="15,0,0,0">
+                                <Run Text="Ф.И.О: "></Run>
+                                <Run Text="{Binding FullName}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Дата рождения: "></Run>
+                                <Run Text="{Binding Birthday}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Адресс: "></Run>
+                                <Run Text="{Binding Adress}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Телефон:"></Run>
+                                <Run Text="{Binding Phone}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Медицинский полис: "></Run>
+                                <Run Text="{Binding Medical_policy}"></Run>
+                                    </TextBlock>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Label Content="Пациенты" HorizontalAlignment="Left" Margin="183,0,0,0" VerticalAlignment="Center" Foreground="White" FontSize="32"/>
+                    <ComboBox x:Name="Filter_Spec_Pr" HorizontalAlignment="Left" Margin="90,109,0,0" VerticalAlignment="Top" Width="370" Height="40" ItemsSource="{Binding Specialization}" SelectionChanged="Filter_Spec_Pr_SelectionChanged" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock><Run Text="{Binding Name}"/></TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Label Content="Фильтрация" HorizontalAlignment="Left" Margin="201,55,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <Label Content="Поиск по полису" HorizontalAlignment="Left" Margin="164,530,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <TextBox x:Name="Search_TB_Pr" HorizontalAlignment="Left" Margin="75,584,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" BorderBrush="Black" TextChanged="Search_TB_Pr_TextChanged" />
+                    <Button x:Name="Add_Btn_Priem" Content="Добавить приём" HorizontalAlignment="Left" Margin="638,603,0,0" VerticalAlignment="Top" Background="#FFF36400" Width="250" Foreground="White" BorderBrush="White" Height="50" FontWeight="Bold" Click="Add_Btn_Priem_Click" />
+                    <Label Content="Дата приёма" HorizontalAlignment="Left" Margin="681,456,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <DatePicker x:Name="Date_Priem" HorizontalAlignment="Left" Margin="638,530,0,0" VerticalAlignment="Top" Width="250" BorderBrush="Black"/>
+                    <ListView x:Name="List_Reception" ItemsSource="{Binding Receptions}" Margin="957,165,0,0" HorizontalContentAlignment="Stretch">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="7" Margin="0,5,0,5">
+
+                                    <TextBlock Margin="15,0,0,0">
+                                        <Run Text="Врач:"/>
+                                        <Run Text=" "/>
+                                        <Run Text="{Binding Doctor1.FullName}"/>
+                                        <LineBreak/>
+                                        <Run Text="Пациент:"/>
+                                        <Run Text=" "/>
+                                        <Run Text="{Binding Patient1.FullName}"/>
+                                        <LineBreak/>
+                                        <Run Text="Дата приёма:"/>
+                                        <Run Text=" "/>
+                                        <Run Text="{Binding Date}"/>
+                                    </TextBlock>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Label Content="Поиск по врачу" HorizontalAlignment="Left" Margin="1335,55,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <TextBox x:Name="Search_TB_Pr_Doctor" HorizontalAlignment="Left" Margin="1250,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="370" BorderBrush="Black"  Height="40" TextChanged="Search_TB_Pr_Doctor_TextChanged" />
+                    <Button x:Name="Del_Btn_Priem" Content="Удалить приём" HorizontalAlignment="Left" Margin="638,683,0,0" VerticalAlignment="Top" Background="#FFF36400" Width="250" Foreground="White" BorderBrush="White" Height="50" FontWeight="Bold" Click="Del_Btn_Priem_Click" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Информация о лечениях">
+                <Grid Background="#FF757575">
+                    <ListView x:Name="List_Doctor_Tre" ItemsSource="{Binding Doctors}" Margin="0,165,1364,542" HorizontalContentAlignment="Stretch">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="7" Margin="0,5,0,5">
+
+                                    <TextBlock Margin="15,0,0,0">
+                                <Run Text="Ф.И.О: "></Run>
+                                <Run Text="{Binding FullName}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Специальность: "></Run>
+                                <Run Text="{Binding Specialization}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Телефон:"></Run>
+                                <Run Text="{Binding Phone}"></Run>
+                                    </TextBlock>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Label Content="Врачи" HorizontalAlignment="Left" Margin="218,0,0,0" VerticalAlignment="Top" Foreground="White" FontSize="32"/>
+                    <ListView x:Name="List_Patient_Tre" Margin="0,638,1364,0" ItemsSource="{Binding Patients}" HorizontalContentAlignment="Stretch">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="7" Margin="0,5,0,5">
+
+
+                                    <TextBlock Margin="15,0,0,0">
+                                <Run Text="Ф.И.О: "></Run>
+                                <Run Text="{Binding FullName}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Дата рождения: "></Run>
+                                <Run Text="{Binding Birthday}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Адресс: "></Run>
+                                <Run Text="{Binding Adress}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Телефон:"></Run>
+                                <Run Text="{Binding Phone}"></Run>
+                                <LineBreak></LineBreak>
+                                <Run Text="Медицинский полис: "></Run>
+                                <Run Text="{Binding Medical_policy}"></Run>
+                                    </TextBlock>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Label Content="Пациенты" HorizontalAlignment="Left" Margin="183,0,0,0" VerticalAlignment="Center" Foreground="White" FontSize="32"/>
+                    <ComboBox x:Name="Filter_Spec_Tre" HorizontalAlignment="Left" Margin="90,109,0,0" VerticalAlignment="Top" Width="370" Height="40" ItemsSource="{Binding Specialization}" SelectionChanged="Filter_Spec_Tre_SelectionChanged"  >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock><Run Text="{Binding Name}"/></TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Label Content="Фильтрация" HorizontalAlignment="Left" Margin="201,55,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <Label Content="Поиск по полису" HorizontalAlignment="Left" Margin="164,530,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <TextBox x:Name="Search_TB_Tre" HorizontalAlignment="Left" Margin="75,584,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" BorderBrush="Black" TextChanged="Search_TB_Tre_TextChanged" />
+                    <Button x:Name="Add_Btn_Tre" Content="Добавить лечение" HorizontalAlignment="Left" Margin="642,585,0,0" VerticalAlignment="Top" Background="#FFF36400" Width="250" Foreground="White" BorderBrush="White" Height="50" FontWeight="Bold" Click="Add_Btn_Tre_Click" />
+                    <Label Content="Дата лечения" HorizontalAlignment="Left" Margin="681,290,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <DatePicker x:Name="Date_Tre" HorizontalAlignment="Left" Margin="638,364,0,0" VerticalAlignment="Top" Width="250" BorderBrush="Black"/>
+                    <ListView x:Name="List_Treatment" ItemsSource="{Binding Treatments}" Margin="957,165,0,0" HorizontalContentAlignment="Stretch">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" BorderThickness="7" Margin="0,5,0,5">
+
+                                    <TextBlock Margin="15,0,0,0">
+                                        <Run Text="Врач:"/>
+                                        <Run Text=" "/>
+                                        <Run Text="{Binding Doctor1.FullName}"/>
+                                        <LineBreak/>
+                                        <Run Text="Пациент:"/>
+                                        <Run Text=" "/>
+                                        <Run Text="{Binding Patient1.FullName}"/>
+                                        <LineBreak/>
+                                        <Run Text="Дата приёма:"/>
+                                        <Run Text=" "/>
+                                        <Run Text="{Binding Date}"/>
+                                        <LineBreak/>
+                                        <Run Text="Сведения о лечении:"/>
+                                        <Run Text=" "/>
+                                        <Run Text="{Binding Information}"/>
+                                    </TextBlock>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Label Content="Поиск по врачу" HorizontalAlignment="Left" Margin="1335,55,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <TextBox x:Name="Search_TB_Tre_Doctor" HorizontalAlignment="Left" Margin="1250,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="370" BorderBrush="Black"  Height="40" TextChanged="Search_TB_Tre_Doctor_TextChanged"  />
+                    <Button x:Name="Del_Btn_Tre" Content="Удалить лечение" HorizontalAlignment="Left" Margin="642,665,0,0" VerticalAlignment="Top" Background="#FFF36400" Width="250" Foreground="White" BorderBrush="White" Height="50" FontWeight="Bold" Click="Del_Btn_Tre_Click"  />
+                    <Label Content="Сведения о лечении" HorizontalAlignment="Left" Margin="635,433,0,0" VerticalAlignment="Top" Foreground="White" FontStyle="Normal" FontWeight="Bold"/>
+                    <TextBox x:Name="Infor_TB" HorizontalAlignment="Left" Margin="615,501,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="293" BorderBrush="Black" Height="51"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
